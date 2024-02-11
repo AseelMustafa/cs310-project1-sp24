@@ -144,73 +144,7 @@ public class ClassSchedule {
         CSVWriter csvWriter = new CSVWriter(writer,'\t','"','\\',"\n");
         csvWriter.writeAll(csvList);
         
-       /* String CUSTOM_LINE_END = "\n"; // Equivalent to 0x0D 0x0A
-        StringWriter sw = new StringWriter(); 
-        CSVWriter csvWriter = new CSVWriter(sw, '\t', CSVWriter.DEFAULT_QUOTE_CHARACTER,
-                     CSVWriter.DEFAULT_ESCAPE_CHARACTER, CUSTOM_LINE_END);
 
-        String[] header = new String[13];
-        header[0] = CRN_COL_HEADER;
-        header[1] = SUBJECT_COL_HEADER;
-        header[2] = NUM_COL_HEADER;
-        header[3] = DESCRIPTION_COL_HEADER;
-        header[4] = SECTION_COL_HEADER;
-        header[5] = TYPE_COL_HEADER;
-        header[6] = CREDITS_COL_HEADER;
-        header[7] = START_COL_HEADER;
-        header[8] = END_COL_HEADER;
-        header[9] = DAYS_COL_HEADER;
-        header[10] = WHERE_COL_HEADER;
-        header[11] = SCHEDULE_COL_HEADER;
-        header[12] = INSTRUCTOR_COL_HEADER;
-        csvWriter.writeNext(header);
-        
-        int counter = 0;
-        for(Object objitem:  section)
-        {
-            counter++;
-            JsonObject item = (JsonObject) objitem;
-            
-            String[] line = new String[13];
-            line[0] =  Long.toString(((BigDecimal) item.get(CRN_COL_HEADER)).longValue());
-            line[1] = (String) subject.get( (String) item.get(SUBJECTID_COL_HEADER));
-            //for (Object courseitem: course)
-            
-            for (Object keyObj : course.keySet()) {
-                String key = (String) keyObj; // Cast key object to String
-                JsonObject coursechild = (JsonObject)course.get(key); // Get value for the key
-                //if (((String) coursechild.get(NUM_COL_HEADER)).equalsIgnoreCase((String) item.get(NUM_COL_HEADER)))
-                if (((String) coursechild.get(NUM_COL_HEADER)).equalsIgnoreCase((String) item.get(NUM_COL_HEADER)) && ((String) coursechild.get(SUBJECTID_COL_HEADER)).equalsIgnoreCase((String) item.get(SUBJECTID_COL_HEADER)))
-                {
-                    line[2] = key;
-                    line[3] =(String) coursechild.get(DESCRIPTION_COL_HEADER);
-                    line[6] = Long.toString(((BigDecimal) coursechild.get(CREDITS_COL_HEADER)).longValue());//((BigDecimal) coursechild.get(CREDITS_COL_HEADER)).toString();
-                    break;
-                }
-            }
-            
-            line[4] =(String) item.get(SECTION_COL_HEADER);
-            line[5] = (String) item.get(TYPE_COL_HEADER);
-            line[7] = (String) item.get(START_COL_HEADER);
-            line[8] = (String) item.get(END_COL_HEADER);
-            line[9] = (String) item.get(DAYS_COL_HEADER);
-            line[10] = (String) item.get(WHERE_COL_HEADER);
-            line[11] =(String) scheduletype.get( ((String) item.get(TYPE_COL_HEADER)));
-            JsonArray instructor = (JsonArray) item.get("instructor");
-            
-            String instructorvalue = "";
-            for (Object value : instructor) {
-                if (!instructorvalue.isEmpty())
-                    instructorvalue += ", ";
-                instructorvalue += (String) value;
-            }
-            line[12] = instructorvalue;
-
-            csvWriter.writeNext(line);
-        
-        }
-        return sw.toString();
-        */
        return writer.toString();
     }
     
